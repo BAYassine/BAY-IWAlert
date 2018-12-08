@@ -9,6 +9,6 @@ namespace Presentation.Service
 {
     public interface IServiceDisease : IService<Disease>
     {
-
+        
     }
 }

@@ -19,6 +19,9 @@ namespace Presentation.Models
             return userIdentity;
         }
         public Place Place { get; set; }
+        public string Cin { get; set; }
         public ICollection<Notification> Notifications { get; set; }
+        public ICollection<Alerte> Alertes { get; set; }
+
     }
 }
