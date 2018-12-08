@@ -18,5 +18,16 @@ namespace Presentation
         {
             return new IWContext();
         }
+
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Disease> Diseases { get; set; }
+        public DbSet<Danger> Dangers { get; set; }
+        public DbSet<Symptom> Symptoms { get; set; }
+        public DbSet<Prevention_Control> Prevention_Controls { get; set; }
+        public DbSet<Advice> Advices { get; set; }
+        public DbSet<Statistic> Statistic { get; set; }
+        public DbSet<Diagnostic> Diagnostics { get; set; }
+        public DbSet<Treatement> Treatements { get; set; }
+        public DbSet<Alerte> Alertes { get; set; }
     }
 }

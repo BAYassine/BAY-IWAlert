@@ -18,5 +18,7 @@ namespace Presentation.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public Place Place { get; set; }
+        public ICollection<Notification> Notifications { get; set; }
     }
 }
