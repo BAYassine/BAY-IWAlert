@@ -10,5 +10,6 @@ namespace Presentation.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public string Picture { get; set; }
+        public Disease Disease { get; set; }
     }
 }

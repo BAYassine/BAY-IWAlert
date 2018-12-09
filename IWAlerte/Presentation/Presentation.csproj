@@ -205,13 +205,25 @@
     <Compile Include="IService\IService.cs" />
     <Compile Include="IService\Service.cs" />
     <Compile Include="IWContext.cs" />
-    <Compile Include="Migrations\201812082246200_v1.cs" />
-    <Compile Include="Migrations\201812082246200_v1.Designer.cs">
-      <DependentUpon>201812082246200_v1.cs</DependentUpon>
+    <Compile Include="Migrations\201812090336382_v1.cs" />
+    <Compile Include="Migrations\201812090336382_v1.Designer.cs">
+      <DependentUpon>201812090336382_v1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812082319321_v2.cs" />
-    <Compile Include="Migrations\201812082319321_v2.Designer.cs">
-      <DependentUpon>201812082319321_v2.cs</DependentUpon>
+    <Compile Include="Migrations\201812090359114_v2.cs" />
+    <Compile Include="Migrations\201812090359114_v2.Designer.cs">
+      <DependentUpon>201812090359114_v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812090403001_v3.cs" />
+    <Compile Include="Migrations\201812090403001_v3.Designer.cs">
+      <DependentUpon>201812090403001_v3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812090406524_v4.cs" />
+    <Compile Include="Migrations\201812090406524_v4.Designer.cs">
+      <DependentUpon>201812090406524_v4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812090411114_v5.cs" />
+    <Compile Include="Migrations\201812090411114_v5.Designer.cs">
+      <DependentUpon>201812090411114_v5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -225,6 +237,7 @@
     <Compile Include="Models\Medecin.cs" />
     <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Place.cs" />
+    <Compile Include="Models\PlaceVM.cs" />
     <Compile Include="Models\Prevention_Control.cs" />
     <Compile Include="Models\Statistic.cs" />
     <Compile Include="Models\Symptom.cs" />
@@ -232,9 +245,13 @@
     <Compile Include="Models\ViewModel\AlerteVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\IServiceAlerte.cs" />
+    <Compile Include="Service\IServiceDanger.cs" />
     <Compile Include="Service\IServiceDisease.cs" />
+    <Compile Include="Service\IServiceSymptom.cs" />
     <Compile Include="Service\ServiceAlerte.cs" />
+    <Compile Include="Service\ServiceDanger.cs" />
     <Compile Include="Service\ServiceDisease.cs" />
+    <Compile Include="Service\ServiceSymptom.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -569,6 +586,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Alerte\Create.cshtml" />
     <Content Include="Views\Alerte\_DisplayInformation.cshtml" />
+    <Content Include="Views\Alerte\Error.cshtml" />
+    <Content Include="Views\Alerte\Sucess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -582,11 +601,20 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812082246200_v1.resx">
-      <DependentUpon>201812082246200_v1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812090336382_v1.resx">
+      <DependentUpon>201812090336382_v1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812082319321_v2.resx">
-      <DependentUpon>201812082319321_v2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812090359114_v2.resx">
+      <DependentUpon>201812090359114_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812090403001_v3.resx">
+      <DependentUpon>201812090403001_v3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812090406524_v4.resx">
+      <DependentUpon>201812090406524_v4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812090411114_v5.resx">
+      <DependentUpon>201812090411114_v5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

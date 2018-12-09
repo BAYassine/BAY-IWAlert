@@ -29,7 +29,12 @@ namespace Presentation.Controllers
         {
             AlerteVM avm = new AlerteVM();
             IServiceDisease servicealerte = new ServiceDisease();
+            IServiceSymptom servicesymptom = new ServiceSymptom();
             avm.AllDisease = (ICollection<Disease>)servicealerte.GetAll();
+            foreach(var x in avm.AllDisease)
+            {
+                x.Symptoms = servicesymptom.GetByDisease(x);
+            }
             return View(avm);     
         }
         // POST: Alerte/Create
@@ -39,29 +44,67 @@ namespace Presentation.Controllers
         {
             IServiceDisease service = new ServiceDisease();
             IServiceAlerte serviceAlerte = new ServiceAlerte();
+            IServiceDanger servicedanger = new ServiceDanger();
             IWContext context = new IWContext();
             avm.NameDiseas = avm.NameDiseas.Trim();
-            Disease disease = service.FindByName(avm.NameDiseas);
+            Disease disease = context.Diseases.Where(d => d.Name.Equals(avm.NameDiseas)).FirstOrDefault();
+            //context.Entry(disease).State = System.Data.Entity.EntityState.Unchanged;
+            //Disease disease = service.FindByName(avm.NameDiseas);         
             if (disease != null)
             {
                 string userid = User.Identity.GetUserId();               
                 ApplicationUser user = context.Users.FirstOrDefault(x => x.Id == userid);
-
-                if (user != null)
+                Alerte LastAlerte = serviceAlerte.GetAlerteByUser(user);
+                if( (LastAlerte != null /* && LastAlerte.DateTime.Subtract(DateTime.Today).Days >= 7 */) || LastAlerte == null)
                 {
-                    Alerte alerte = new Alerte()
+                    if (user != null)
                     {
-                        Disease = disease,
-                        User = user
-                    };
-                    //serviceAlerte.Add(alerte);
-                    //serviceAlerte.Commit();
-                    context.Alertes.Add(alerte);
-                    context.SaveChanges();
-                    context.Dispose();
+                        Alerte alerte = new Alerte()
+                        {
+                            Disease = disease,
+                            User = user,
+                            DateTime = DateTime.Today
+                        };
+                        context.Alertes.Add(alerte);
+                        context.SaveChanges();
 
+                        ICollection<Danger> Dangers = context.Dangers.Include("Alertes").ToList();
+                        Danger danger = new Danger();
+                        foreach(var D in Dangers)
+                        {
+                            foreach(var x in D.Alertes)
+                            {
+                                Alerte y = context.Alertes.Include("Disease").Where(c => c.Id == x.Id).SingleOrDefault();
+                                if (y.Disease.Name.Equals(alerte.Disease.Name))
+                                    danger = D;
+                            }
+                        }
+                        //Danger danger = servicedanger.GetDangerByAlert(alerte);
+                        if(danger == null)
+                        {
+                            danger = new Danger();
+                            danger.Alertes.Add(alerte);
+                            context.Dangers.Add(danger);
+                            context.SaveChanges();
+                      
+                        }
+                        else
+                        {
+                            danger.Alertes.Add(alerte);
+                            context.SaveChanges();
+                        }
+                        context.Dispose();
+                        return View("Sucess");
+                    }
                 }
-            }            
+                else
+                {
+                    context.Dispose();
+                    return View("Error");
+                }
+                
+            }
+            context.Dispose();
             return Create();
         }
 
@@ -107,6 +150,14 @@ namespace Presentation.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult Error()
+        {
+            return View();
+        }
+        public ActionResult Sucess()
+        {
+            return View();
         }
     }
 }

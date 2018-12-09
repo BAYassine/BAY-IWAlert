@@ -79,6 +79,10 @@ namespace Presentation.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public PlaceVM Place { get; set; }
+        public string Cin { get; set; }
+        public ICollection<Notification> Notifications { get; set; }
     }
 
     public class ResetPasswordViewModel

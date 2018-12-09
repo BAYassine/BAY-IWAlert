@@ -9,6 +9,8 @@ namespace Presentation.Models
     {
         public int Id { get; set; }
         public ApplicationUser User { get; set; }
-        public virtual Disease Disease { get; set; }
+        public Disease Disease { get; set; }
+        public DateTime DateTime { get; set; }
+        public Danger Danger { get; set; }
     }
 }

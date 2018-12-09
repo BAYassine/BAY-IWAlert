@@ -35,7 +35,7 @@ namespace Presentation.Migrations
 
             Place place = new Place()
             {
-                Country = "Tunisia",
+                Country = Pays.Tunisia.ToString(),
                 Town = "Tunis"
             };
             user.Place = place;
@@ -81,6 +81,30 @@ namespace Presentation.Migrations
                 Name = "Lassa fever",
                 Description = "Lassa fever, also known as Lassa hemorrhagic fever (LHF), is a type of viral hemorrhagic fever caused by the Lassa virus. Many of those infected by the virus do not develop symptoms. When symptoms occur they typically include fever, weakness, headaches, vomiting, and muscle pains. Less commonly there may be bleeding from the mouth or gastrointestinal tract. The risk of death once infected is about one percent and frequently occurs within two weeks of the onset of symptoms. Among those who survive about a quarter have hearing loss, which improves over time in about half."
             };
+            Symptom SymptomOfChikungunya = new Symptom()
+            {
+                Description = "High fever ,Severe muscle and joint pain ,Severe headache , Nausea ,Vomiting ,Rash on the skin due to damaged blood vessels ,Enlarged painful lymph node in the neck ,Sore throat ,Painful abdominal cramps, Cold fingers and toes , Dizziness ,Constipation",
+                Picture = "1.jpeg"
+            };
+            Symptom SymptomOfCholera = new Symptom()
+            {
+                Description = "Diarrhea. Cholera-related diarrhea comes on suddenly and may quickly cause dangerous fluid loss — as much as a quart (about 1 liter) an hour. Diarrhea due to cholera often has a pale, milky appearance that resembles water in which rice has been rinsed (rice-water stool). Nausea and vomiting. Occurring especially in the early stages of cholera, vomiting may persist for hours at a time. Dehydration. Dehydration can develop within hours after the onset of cholera symptoms. Depending on how many body fluids have been lost, dehydration can range from mild to severe. A loss of 10 percent or more of total body weight indicates severe dehydration.",
+                Picture = "2.jpg"
+            };
+            Symptom SymptomOfCrimean_Congo_haemorrhagic_fever = new Symptom()
+            {
+                Description= "The length of the incubation period depends on the mode of acquisition of the virus. Following infection by a tick bite, the incubation period is usually one to three days, with a maximum of nine days. The incubation period following contact with infected blood or tissues is usually five to six days, with a documented maximum of 13 days. Onset of symptoms is sudden, with fever, myalgia, (muscle ache), dizziness, neck pain and stiffness, backache, headache, sore eyes and photophobia (sensitivity to light). There may be nausea, vomiting, diarrhoea, abdominal pain and sore throat early on, followed by sharp mood swings and confusion. After two to four days, the agitation may be replaced by sleepiness, depression and lassitude, and the abdominal pain may localize to the upper right quadrant, with detectable hepatomegaly (liver enlargement). Other clinical signs include tachycardia (fast heart rate), lymphadenopathy (enlarged lymph nodes), and a petechial rash (a rash caused by bleeding into the skin) on internal mucosal surfaces, such as in the mouth and throat, and on the skin. The petechiae may give way to larger rashes called ecchymoses, and other haemorrhagic phenomena. There is usually evidence of hepatitis, and severely ill patients may experience rapid kidney deterioration, sudden liver failure or pulmonary failure after the fifth day of illness.",
+                Picture ="3..jpg"
+            };
+            Symptom SymptomOfEbola = new Symptom()
+            {
+                Description= "High fever , Headache , Joint and muscle aches , Sore throat ,Weakness ,Stomach pain , Lack of appetite",
+                Picture = "4.jpg"
+            };
+            Chikungunya.Symptoms.Add(SymptomOfChikungunya);
+            Cholera.Symptoms.Add(SymptomOfCholera) ;
+            Crimean_Congo_haemorrhagic_fever.Symptoms.Add(SymptomOfCrimean_Congo_haemorrhagic_fever);
+            Ebola_virus_disease.Symptoms.Add(SymptomOfEbola);
             ServiceDisease.Add(Chikungunya);
             ServiceDisease.Add(Crimean_Congo_haemorrhagic_fever);
             ServiceDisease.Add(Cholera);
@@ -89,6 +113,7 @@ namespace Presentation.Migrations
             ServiceDisease.Add(Influenza);
             ServiceDisease.Add(Lassa_fever);
             ServiceDisease.Commit();
+            
             base.Seed(context);
         }
     }

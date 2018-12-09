@@ -30,6 +30,13 @@
         </div>
     </div>
     <div class="form-group">
+        @Html.LabelFor(model => model.Place.Country, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Country")
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Place.Country, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Place.Country, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />
         </div>
