@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Presentation.Models;
+using Presentation.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,11 +9,12 @@ using System.Web;
 
 namespace Presentation
 {
-    public class IWContext : IdentityDbContext<User>
+
+    public class IWContext : IdentityDbContext<ApplicationUser>
     {
         public IWContext() : base("name=IWConnection")
         {
-
+            //Database.SetInitializer<IWContext>(new MyCustomStrategy());
         }
         public static IWContext Create()
         {

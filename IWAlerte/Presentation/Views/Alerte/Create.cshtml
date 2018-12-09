@@ -1,0 +1,104 @@
+﻿@model Presentation.Models.ViewModel.AlerteVM
+
+@{
+    ViewBag.Title = "Alerte";
+}
+
+@using (Html.BeginForm())
+{
+    
+    @Html.AntiForgeryToken()
+    int i = 0;
+    foreach (var diseas in Model.AllDisease)
+    {
+        
+        <div id="@i" style="display:none" class="myblocks">
+            @Html.Partial("_DisplayInformation", diseas)
+        </div>
+        i++;
+    }
+
+
+
+    <div class="form-horizontal">
+        <h4>Alerte</h4>
+        <div id="partial">
+
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="form-group" style="display:none">
+                @Html.LabelFor(model => model.NameDiseas, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Name Diseas :")
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NameDiseas, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Name", @type = "text" } })
+                    @Html.ValidationMessageFor(model => model.NameDiseas, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="m-dropdown m-dropdown--inline m-dropdown--arrow" m-dropdown-toggle="hover" aria-expanded="true" m-dropdown-persistent="1">
+                    <a class="m-dropdown__toggle btn btn-brand dropdown-toggle" href="#" id="selected">Name Diseas</a>
+                    <div class="m-dropdown__wrapper" style="z-index: 101;">
+                        <span class="m-dropdown__arrow m-dropdown__arrow--left">
+
+                        </span>
+                        <div class="m-dropdown__inner">
+                            <div class="m-dropdown__body">
+                                <div class="m-dropdown__content">
+                                    <ul class="m-nav">
+                                        <li class="m-nav__section m-nav__section--first">
+                                            <span class="m-nav__section-text">Diseases</span>
+                                        </li>
+                                        @{
+                   
+                                            foreach (var x in Model.AllDisease)
+                                            {
+
+                                                <li class="m-nav__item diseasitem">
+                                                    <a class="m-nav__link" href="#">
+                                                        @x.Name
+                                                    </a>
+                                                </li>
+                                            }
+                                        }
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Alert" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(function () {
+        $(".diseasitem").click(function () {
+            var index = $('.diseasitem').index($(this));
+            $('#namediseas option').removeAttr('selected');
+            $('#namediseas option[value='+index+']').attr('selected', 'selected');
+            $("#NameDiseas").val($(this).text());
+            $(".myblocks").css("display", "none");
+            $("#selected").html($(this).text());
+            $("#" + index).css("display", "block");
+        })
+    })
+
+</script>
+}
+
+

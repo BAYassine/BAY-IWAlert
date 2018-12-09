@@ -8,7 +8,7 @@ namespace Presentation.Models
     public class Alerte
     {
         public int Id { get; set; }
-        public User User { get; set; }
-        public Disease Disease { get; set; }
+        public ApplicationUser User { get; set; }
+        public virtual Disease Disease { get; set; }
     }
 }
