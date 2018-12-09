@@ -47,11 +47,9 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
@@ -199,6 +197,7 @@
     <Compile Include="Controllers\DangerController.cs" />
     <Compile Include="Controllers\AlerteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -216,17 +215,9 @@
     <Compile Include="IService\IService.cs" />
     <Compile Include="IService\Service.cs" />
     <Compile Include="IWContext.cs" />
-    <Compile Include="Migrations\201812082246200_v1.cs" />
-    <Compile Include="Migrations\201812082246200_v1.Designer.cs">
-      <DependentUpon>201812082246200_v1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812082319321_v2.cs" />
-    <Compile Include="Migrations\201812082319321_v2.Designer.cs">
-      <DependentUpon>201812082319321_v2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812081518344_v3.cs" />
-    <Compile Include="Migrations\201812081518344_v3.Designer.cs">
-      <DependentUpon>201812081518344_v3.cs</DependentUpon>
+    <Compile Include="Migrations\201812090528100_v1.cs" />
+    <Compile Include="Migrations\201812090528100_v1.Designer.cs">
+      <DependentUpon>201812090528100_v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -239,6 +230,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Medecin.cs" />
     <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\PaysCouleur.cs" />
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\PlaceVM.cs" />
     <Compile Include="Models\Prevention_Control.cs" />
@@ -513,6 +505,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\1.jpeg" />
+    <Content Include="images\2.jpg" />
+    <Content Include="images\3.jpg" />
+    <Content Include="images\4.jpg" />
+    <Content Include="images\5.jpg" />
+    <Content Include="images\6.png" />
+    <Content Include="images\7.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\assets\vendors\base\fonts\flaticon\Flaticon.eot" />
@@ -598,6 +597,8 @@
     <Content Include="Views\Alerte\Sucess.cshtml" />
     <Content Include="Views\Alerts\Index.cshtml" />
     <Content Include="Views\Danger\Index.cshtml" />
+    <Content Include="Views\LandingPage\Index.cshtml" />
+    <Content Include="Views\Shared\Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -611,14 +612,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812082246200_v1.resx">
-      <DependentUpon>201812082246200_v1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812082319321_v2.resx">
-      <DependentUpon>201812082319321_v2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812082038032_Disease+Danger_attributes.resx">
-      <DependentUpon>201812082038032_Disease+Danger_attributes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812090528100_v1.resx">
+      <DependentUpon>201812090528100_v1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
