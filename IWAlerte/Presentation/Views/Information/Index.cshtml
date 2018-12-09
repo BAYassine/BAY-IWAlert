@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Presentation.Models.Disease>
+@{
+    ViewBag.Title = "Information about diseases";
+}
+@foreach (Presentation.Models.Disease x in Model)
+{
+  
+    <div class="m-portlet m-portlet--full-height ">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">@x.Name</h3>
+                </div>
+        </div>
+            </div>
+            <div class="m-portlet__body">
+                <div class="m-widget3">
+                    <div class="m-widget3__item">
+                        <div class="m-widget3__header">
+                            <div class="m-widget3__user-img">
+                                <img class="m-widget3__img" src="../../images/@x.Picture"/>
+                            </div>
+                            <div class="m-widget3__info">
+                                <span class="m-widget3__username">
+                                    Description
+                                </span>
+                            </div>
+                        </div>
+                        <div class="m-widget3__body">
+                            <p class="m-widget3__text">@x.Description</p>
+                        </div>
+                    </div>
+                    <div class="m-widget3__item">
+                        <div class="m-widget3__header">
+                            <div class="m-widget3__user-img">
+                                
+                            </div>
+                            <div class="m-widget3__info">
+                                <span class="m-widget3__username">
+                                    Symptomps
+                                </span>
+                            </div>
+                        </div>
+                        @if (x.Symptoms != null || x.Symptoms.Count != 0 )
+                        {
+                            <div class="m-widget3__body">
+                                @foreach (var s in x.Symptoms)
+                                {
+                                    if (!s.Description.Equals("") || s.Description != null)
+                                    {
+                                        <p class="m-widget3__text">@s.Description</p>
+                                    }
+                                }                                                     
+                            </div>
+                        }                      
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+}
+
+
+

@@ -197,6 +197,7 @@
     <Compile Include="Controllers\DangerController.cs" />
     <Compile Include="Controllers\AlerteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -218,6 +219,10 @@
     <Compile Include="Migrations\201812090559337_V1.cs" />
     <Compile Include="Migrations\201812090559337_V1.Designer.cs">
       <DependentUpon>201812090559337_V1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812090932298_V2.cs" />
+    <Compile Include="Migrations\201812090932298_V2.Designer.cs">
+      <DependentUpon>201812090932298_V2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -600,6 +605,8 @@
     <Content Include="Views\LandingPage\Index.cshtml" />
     <Content Include="Views\Shared\Sidebar.cshtml" />
     <Content Include="Views\LandingPage\Index.cshtml" />
+    <Content Include="Views\Shared\_DisplaySpecificInformation.cshtml" />
+    <Content Include="Views\Information\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -615,6 +622,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201812090559337_V1.resx">
       <DependentUpon>201812090559337_V1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812090932298_V2.resx">
+      <DependentUpon>201812090932298_V2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
