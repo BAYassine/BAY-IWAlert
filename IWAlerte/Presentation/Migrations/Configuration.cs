@@ -30,6 +30,10 @@ namespace Presentation.Migrations
             }
             var user = new User();
             user.UserName = name;
+            user.Place = new Place
+            {
+                Country = "Tunisia", Town = "Tunis"
+            };
             var adminresult = UserManager.Create(user, password);
             if (adminresult.Succeeded)
             {

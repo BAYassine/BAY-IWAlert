@@ -1,0 +1,99 @@
+﻿@using Presentation.Models
+@model dynamic
+
+@{
+    ViewBag.Title = "Dangers";
+}
+
+@{
+    int i = 0;
+}
+<div class="row">
+    <div class="col-lg-6">
+        <!--begin::Portlet-->
+        <div class="m-portlet m-portlet--full-height">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            Pending dangers
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="m-portlet__body">
+                <!--begin::Section-->
+                <div class="m-accordion m-accordion--bordered" id="m_accordion_2" role="tablist">
+
+                    <!--begin::Item-->
+                    @foreach (Danger d in (IEnumerable<Danger>)ViewData["dangers"])
+                    {
+                        <div class="m-accordion__item">
+                            <div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_2_item_1_head" data-toggle="collapse" href="#m_accordion_2_item_1_body" aria-expanded="    false">
+                                <span class="m-accordion__item-title" data-toggle="modal" data-target="#m_modal_1">@d.Disease.Name</span>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#modal-@i">Details</button>
+                            </div>
+                        </div>
+                        i++;
+
+                    }
+
+
+                </div>
+                <!--end::Section-->
+            </div>
+        </div>
+        <!--end::Portlet-->
+    </div>
+</div>
+
+@{
+    i = 0;
+}
+@foreach (Danger d in (IEnumerable<Danger>)ViewData["dangers"])
+{
+
+    <div class="modal fade" id="modal-@i" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">@d.Disease.Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="@Url.Content("Content/assets/app/media/img/diseases/1.jpg")" height="100"/>
+                        </div>
+                        <div class="col-md-9">
+                            <h2>Alerts : <small>@d.Alertes.Count</small></h2>
+                            <h4>Description : </h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet auctor condimentum. Duis ultrices placerat commodo. Curabitur blandit nulla ut nisl varius, non tincidunt risus ullamcorper.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="nav nav-tabs  m-tabs-line" role="tablist">
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link active show" data-toggle="tab" href="#m_tabs_1_1" role="tab" aria-selected="true">Symptoms</a>
+                                </li>
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_tabs_1_3" role="tab" aria-selected="false">Logs</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Didn't encounter similar cases</button>
+                    <a class="btn btn-primary" href="@Url.Action("Approve", new { id = d.Id })">Approve Disease</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    i++;
+}

@@ -57,6 +57,12 @@
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -189,11 +195,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlertsController.cs" />
+    <Compile Include="Controllers\DangerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\ConnectionMapping.cs" />
+    <Compile Include="Hubs\NotificationHub.cs" />
+    <Compile Include="Hubs\Notifier.cs" />
     <Compile Include="infrastructure\DatabaseFactory.cs" />
     <Compile Include="infrastructure\Disposable.cs" />
     <Compile Include="infrastructure\IDatabaseFactory .cs" />
@@ -215,6 +226,10 @@
     <Compile Include="Migrations\201812081518344_v3.cs" />
     <Compile Include="Migrations\201812081518344_v3.Designer.cs">
       <DependentUpon>201812081518344_v3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812082038032_Disease+Danger_attributes.cs" />
+    <Compile Include="Migrations\201812082038032_Disease+Danger_attributes.Designer.cs">
+      <DependentUpon>201812082038032_Disease+Danger_attributes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -259,6 +274,9 @@
     <Content Include="Content\assets\app\media\img\client-logos\logo3.png" />
     <Content Include="Content\assets\app\media\img\client-logos\logo4.png" />
     <Content Include="Content\assets\app\media\img\client-logos\logo5.png" />
+    <Content Include="Content\assets\app\media\img\diseases\1.jpg" />
+    <Content Include="Content\assets\app\media\img\diseases\2.jpg" />
+    <Content Include="Content\assets\app\media\img\diseases\4.jpg" />
     <Content Include="Content\assets\app\media\img\envato\screen1.jpg" />
     <Content Include="Content\assets\app\media\img\envato\screen2.jpg" />
     <Content Include="Content\assets\app\media\img\error\bg1.jpg" />
@@ -526,6 +544,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.0.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -568,6 +588,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Alerts\Index.cshtml" />
+    <Content Include="Views\Shared\Sidebar.cshtml" />
+    <Content Include="Views\Danger\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -589,6 +612,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812081518344_v3.resx">
       <DependentUpon>201812081518344_v3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812082038032_Disease+Danger_attributes.resx">
+      <DependentUpon>201812082038032_Disease+Danger_attributes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

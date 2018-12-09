@@ -5,15 +5,30 @@
     {
     @Html.AntiForgeryToken()
         
-        <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel">
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "m-menu__link" })
+        
+        <li class="m-nav__item">
+            <a id="registerLink" class="m-nav__link" href="@Url.Action("Index", "Manage", routeValues: null)" title="Manage">
+                <span class="m-nav__link-icon">"Hello " + User.Identity.GetUserName()</span>
+            </a>
         </li>
-        <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel"><a class = "m-menu__link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        <li class="m-nav__item">
+             <a id="registerLink" class="m-nav__link" href="javascript:document.getElementById('logoutForm').submit()" title="Manage">
+                 <span class="m-nav__link-icon">Logoff</span>
+             </a>
+         </li>
     }
 }
 else
 {
-        <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "m-menu__link" })</li>
-        <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "m-menu__link" })</li>
+    <li class="m-nav__item">
+        <a id="registerLink" class="m-nav__link" href="@Url.Action("Register", "Account", routeValues: null)">
+            <span class="m-nav__link-icon">Register</span>
+        </a>
+    </li>
+    <li class="m-nav__item">
+        <a id="loginLink" class="m-nav__link" href="@Url.Action("Login", "Account", routeValues: null)">
+            <span class="m-nav__link-icon">Login</span>
+        </a>
+     </li>
 
 }
