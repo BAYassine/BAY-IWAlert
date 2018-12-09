@@ -7,8 +7,8 @@ using System.Web;
 
 namespace Presentation.Service
 {
-    public interface IServiceAlerte : IService<Alerte>
+    public interface IServiceSymptom : IService<Symptom>
     {
-        Alerte GetAlerteByUser(ApplicationUser user);
+        ICollection<Symptom> GetByDisease(Disease disease);
     }
 }

@@ -7,6 +7,10 @@ namespace Presentation.Models
 {
     public class Danger
     {
+        public Danger()
+        {
+            Alertes = new HashSet<Alerte>();
+        }
         public int Id { get; set; }
         public bool IsCorrect { get; set; }
         public int ApprovedBy { get; set; }

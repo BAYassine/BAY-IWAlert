@@ -26,5 +26,19 @@ namespace Presentation.Models
         public ICollection<Diagnostic> Diagnostics { get; set; }
         public ICollection<Treatement> Treatements { get; set; }
         public Statistic Statistics { get; set; }
+        public override bool Equals(Object obj)
+        {
+            //Check for null and compare run-time types.
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                Disease p = (Disease)obj;
+                return p.Id == this.Id;
+            }
+        }
     }
+
 }

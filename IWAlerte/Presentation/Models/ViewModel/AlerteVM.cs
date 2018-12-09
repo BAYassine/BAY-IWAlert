@@ -15,5 +15,6 @@ namespace Presentation.Models.ViewModel
         public Disease Disease { get; set; }
         public string NameDiseas { get; set; }
         public ICollection<Disease> AllDisease { get; set; }
+        public DateTime Date { get; set; }
     }
 }

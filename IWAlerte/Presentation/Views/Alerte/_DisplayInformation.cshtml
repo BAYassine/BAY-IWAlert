@@ -4,11 +4,32 @@
     <div class="m-portlet__head">
         <div class="m-portlet__head-caption">
             <div class="m-portlet__head-title">
-                <h3 class="m-portlet__head-text">@Model.Name</h3>
+                <h1 class="m-portlet__head-text" style="font-size:25px">@Model.Name</h1>
             </div>
         </div>
     </div>
-    <div class="m-portlet__body">
+    <div class="m-portlet__body" style="font-size:20px">
         @Model.Description
+        <br />
+        <br />
+        <h3 class="m-portlet__head-text">
+            Symtoms
+        </h3>
+        <div class="m-widget5">
+            @foreach (var symptom in Model.Symptoms)
+            {
+                <div class="m-widget5__item">
+                    <div class="m-widget5__content">
+                        <div class="m-widget5__pic" >
+                            <img class="m-widget7__img" src="../../images/@symptom.Picture"/>
+                        </div>
+                        <div class="m-widget5__section" style="font-size:16px">
+                            @symptom.Description
+                        </div>
+                    </div>
+                </div>
+            }         
+        </div>
+        
     </div>
 </div>

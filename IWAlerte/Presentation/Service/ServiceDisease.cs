@@ -26,6 +26,7 @@ namespace Presentation.Service
         public ICollection<Disease> GetAll()
         {
             ICollection<Disease> myliste =(ICollection<Disease>) GetMany(c => !c.Name.Equals("")).ToList();
+
             return myliste; 
         }
     }

@@ -8,19 +8,22 @@ using System.Web;
 
 namespace Presentation.Service
 {
-    public class ServiceAlerte : Service<Alerte>, IServiceAlerte
+    public class ServiceSymptom : Service<Symptom>, IServiceSymptom
     {
         static IDatabaseFactory Factory = new DatabaseFactory();
 
         static IUnitOfWork utk = new UnitOfWork(Factory);
-        public ServiceAlerte() : base(utk)
-        {
 
+        public ICollection<Symptom> GetByDisease(Disease disease)
+        {
+            ICollection<Symptom> symptoms = new HashSet<Symptom>();
+            symptoms = GetMany(c => c.Disease.Id == disease.Id).ToList();
+            return symptoms;
         }
 
-        public Alerte GetAlerteByUser(ApplicationUser user)
+        public ServiceSymptom() : base(utk)
         {
-            return GetMany(c => c.User.Id == user.Id).LastOrDefault();
+
         }
     }
 }

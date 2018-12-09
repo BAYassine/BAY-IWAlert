@@ -23,14 +23,27 @@ namespace Presentation.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        DateTime = c.DateTime(nullable: false),
+                        Danger_Id = c.Int(),
                         Disease_Id = c.Int(),
                         User_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Dangers", t => t.Danger_Id)
                 .ForeignKey("dbo.Diseases", t => t.Disease_Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
+                .Index(t => t.Danger_Id)
                 .Index(t => t.Disease_Id)
                 .Index(t => t.User_Id);
+            
+            CreateTable(
+                "dbo.Dangers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        IsCorrect = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Diseases",
@@ -177,15 +190,6 @@ namespace Presentation.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.Dangers",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        IsCorrect = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -213,6 +217,7 @@ namespace Presentation.Migrations
             DropForeignKey("dbo.Prevention_Control", "Disease_Id", "dbo.Diseases");
             DropForeignKey("dbo.Diagnostics", "Disease_Id", "dbo.Diseases");
             DropForeignKey("dbo.Advices", "Disease_Id", "dbo.Diseases");
+            DropForeignKey("dbo.Alertes", "Danger_Id", "dbo.Dangers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
@@ -228,9 +233,9 @@ namespace Presentation.Migrations
             DropIndex("dbo.Diseases", new[] { "Statistics_Id" });
             DropIndex("dbo.Alertes", new[] { "User_Id" });
             DropIndex("dbo.Alertes", new[] { "Disease_Id" });
+            DropIndex("dbo.Alertes", new[] { "Danger_Id" });
             DropIndex("dbo.Advices", new[] { "Disease_Id" });
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Dangers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.Notifications");
             DropTable("dbo.AspNetUserLogins");
@@ -242,6 +247,7 @@ namespace Presentation.Migrations
             DropTable("dbo.Prevention_Control");
             DropTable("dbo.Diagnostics");
             DropTable("dbo.Diseases");
+            DropTable("dbo.Dangers");
             DropTable("dbo.Alertes");
             DropTable("dbo.Advices");
         }
