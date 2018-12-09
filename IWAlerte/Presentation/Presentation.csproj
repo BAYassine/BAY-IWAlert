@@ -599,6 +599,7 @@
     <Content Include="Views\Danger\Index.cshtml" />
     <Content Include="Views\LandingPage\Index.cshtml" />
     <Content Include="Views\Shared\Sidebar.cshtml" />
+    <Content Include="Views\LandingPage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
