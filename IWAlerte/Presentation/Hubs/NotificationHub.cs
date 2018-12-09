@@ -9,7 +9,7 @@ namespace Presentation.Hubs
 {
     public class NotificationHub : Hub
     {
-        private readonly static ConnectionMapping<string> _connections =
+        public readonly static ConnectionMapping<string> _connections =
             new ConnectionMapping<string>();
 
         public override Task OnConnected()
