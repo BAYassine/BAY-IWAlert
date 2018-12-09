@@ -9,6 +9,6 @@ namespace Presentation.Models
     {
         public int Id { get; set; }
         public bool IsCorrect { get; set; }
-        public ICollection<Alerte> Alertes { get; set; }
+        //public ICollection<Alerte> Alertes { get; set; }
     }
 }

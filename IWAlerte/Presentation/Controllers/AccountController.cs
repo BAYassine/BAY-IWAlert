@@ -151,7 +151,12 @@ namespace Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                Place place = new Place()
+                {
+                    Country = "Tunisia",
+                    Town = "Tunis"
+                };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email ,Place = place};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

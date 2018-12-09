@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Presentation.Models
 {
-    public class Medecin : User
+    public class Medecin : ApplicationUser
     {
         
     }

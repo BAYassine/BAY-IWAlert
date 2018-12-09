@@ -17,5 +17,16 @@ namespace Presentation.Service
         {
 
         }
+
+        public Disease FindByName(string name)
+        {
+            return Get(c => c.Name.Equals(name));
+        }
+
+        public ICollection<Disease> GetAll()
+        {
+            ICollection<Disease> myliste =(ICollection<Disease>) GetMany(c => !c.Name.Equals("")).ToList();
+            return myliste; 
+        }
     }
 }
