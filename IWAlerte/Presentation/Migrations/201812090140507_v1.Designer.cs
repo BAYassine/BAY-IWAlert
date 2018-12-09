@@ -7,13 +7,13 @@ namespace Presentation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DiseaseDanger_attributes : IMigrationMetadata
+    public sealed partial class v1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DiseaseDanger_attributes));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(v1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812082038032_Disease+Danger_attributes"; }
+            get { return "201812090140507_v1"; }
         }
         
         string IMigrationMetadata.Source

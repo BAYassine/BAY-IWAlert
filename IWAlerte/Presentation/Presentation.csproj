@@ -216,21 +216,17 @@
     <Compile Include="IService\IService.cs" />
     <Compile Include="IService\Service.cs" />
     <Compile Include="IWContext.cs" />
-    <Compile Include="Migrations\201812082246200_v1.cs" />
-    <Compile Include="Migrations\201812082246200_v1.Designer.cs">
-      <DependentUpon>201812082246200_v1.cs</DependentUpon>
+    <Compile Include="Migrations\201812090140507_v1.cs" />
+    <Compile Include="Migrations\201812090140507_v1.Designer.cs">
+      <DependentUpon>201812090140507_v1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812082319321_v2.cs" />
-    <Compile Include="Migrations\201812082319321_v2.Designer.cs">
-      <DependentUpon>201812082319321_v2.cs</DependentUpon>
+    <Compile Include="Migrations\201812090304598_v2.cs" />
+    <Compile Include="Migrations\201812090304598_v2.Designer.cs">
+      <DependentUpon>201812090304598_v2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812081518344_v3.cs" />
-    <Compile Include="Migrations\201812081518344_v3.Designer.cs">
-      <DependentUpon>201812081518344_v3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812082038032_Disease+Danger_attributes.cs" />
-    <Compile Include="Migrations\201812082038032_Disease+Danger_attributes.Designer.cs">
-      <DependentUpon>201812082038032_Disease+Danger_attributes.cs</DependentUpon>
+    <Compile Include="Migrations\201812090327569_v3.cs" />
+    <Compile Include="Migrations\201812090327569_v3.Designer.cs">
+      <DependentUpon>201812090327569_v3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -593,6 +589,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Alerte\Create.cshtml" />
     <Content Include="Views\Alerte\_DisplayInformation.cshtml" />
+    <Content Include="Views\Alerts\Index.cshtml" />
+    <Content Include="Views\Danger\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -606,14 +604,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812082246200_v1.resx">
-      <DependentUpon>201812082246200_v1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812090140507_v1.resx">
+      <DependentUpon>201812090140507_v1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812082319321_v2.resx">
-      <DependentUpon>201812082319321_v2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812090304598_v2.resx">
+      <DependentUpon>201812090304598_v2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812082038032_Disease+Danger_attributes.resx">
-      <DependentUpon>201812082038032_Disease+Danger_attributes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812090327569_v3.resx">
+      <DependentUpon>201812090327569_v3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

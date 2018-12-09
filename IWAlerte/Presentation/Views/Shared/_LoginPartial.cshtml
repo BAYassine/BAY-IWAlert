@@ -1,22 +1,20 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
-        
-        
-        <li class="m-nav__item">
-            <a id="registerLink" class="m-nav__link" href="@Url.Action("Index", "Manage", routeValues: null)" title="Manage">
-                <span class="m-nav__link-icon">"Hello " + User.Identity.GetUserName()</span>
-            </a>
-        </li>
-        <li class="m-nav__item">
-             <a id="registerLink" class="m-nav__link" href="javascript:document.getElementById('logoutForm').submit()" title="Manage">
-                 <span class="m-nav__link-icon">Logoff</span>
-             </a>
-         </li>
-    }
+    <li class="m-nav__item">
+        <a id="registerLink" class="m-nav__link" href="@Url.Action("Index", "Manage", routeValues: null)" title="Manage">
+            <span class="m-nav__link-icon">@User.Identity.GetUserName()</span>
+        </a>
+    </li>
+    <li class="m-nav__item">
+        <a id="registerLink" class="m-nav__link" href="javascript:document.getElementById('logoutForm').submit()" title="Manage">
+            <span class="m-nav__link-icon">Logoff</span>
+        </a>
+    </li>
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+     {
+         @Html.AntiForgeryToken()
+     }
 }
 else
 {

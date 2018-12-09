@@ -16,17 +16,17 @@ namespace Presentation.Controllers
         public ActionResult Approve(int id)
         {
             IWContext context = new IWContext();
-            //string userid = User.Identity.GetUserId();
+            string userid = User.Identity.GetUserId();
             ApplicationUser user = context.Users.FirstOrDefault(x => x.Id == userid);
             Danger danger = context.Dangers.FirstOrDefault(d => d.Id == id);
             if (danger == null)
                 return View("Error");
             danger.ApprovedBy++;
-            if (danger.ApprovedBy > 1000 && !danger.Notified)
+            if (danger.ApprovedBy > 500 && !danger.Notified)
             {
                 Notifier notifier = Notifier.getInstance().Value;
                 danger.Notified = true;
-                notifier.NotifyAllNearBy("New danger","");
+                notifier.NotifyAllNearBy("New danger", user.Place.Country);
             }
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -36,7 +36,7 @@ namespace Presentation.Controllers
         {
             IWContext context = new IWContext();
             DateTime monthAgo = DateTime.Now.AddDays(-30);
-            var dangers = context.Dangers.Where(d => d.Date > monthAgo).Include("Disease").Include("Alertes");
+            var dangers = context.Dangers.Where(d => d.Date > monthAgo).Include("Alertes").ToList();
             ViewData["dangers"] = dangers;
             return View();
         }
@@ -46,29 +46,17 @@ namespace Presentation.Controllers
             Danger Danger1 = new Danger
             {
                 Date = DateTime.Now,
-                ApprovedBy = 50,
-                Disease = new Disease
-                {
-                    Name = "Disease 1"
-                }
+                ApprovedBy = 50
             };
             Danger Danger2 = new Danger
             {
                 Date = DateTime.Now.AddDays(-50),
-                ApprovedBy = 500,
-                Disease = new Disease
-                {
-                    Name = "Disease 2"
-                }
+                ApprovedBy = 500
             };
             Danger Danger3 = new Danger
             {
                 Date = DateTime.Now.AddDays(-10),
-                ApprovedBy = 50,
-                Disease = new Disease
-                {
-                    Name = "Disease 3"
-                }
+                ApprovedBy = 50
             };
             IWContext context = new IWContext();
             context.Dangers.AddRange(new List<Danger>(){ Danger1, Danger2 , Danger3});
