@@ -25,8 +25,9 @@ namespace Presentation.Service
 
         public ICollection<Disease> GetAll()
         {
-            ICollection<Disease> myliste =(ICollection<Disease>) GetMany(c => !c.Name.Equals("")).ToList();
-
+            //ICollection<Disease> myliste =(ICollection<Disease>) GetMany(c => !c.Name.Equals("")).ToList();
+            IWContext context = new IWContext();
+            ICollection<Disease> myliste = context.Diseases.Include("Treatements").Include("Symptoms").ToList();
             return myliste; 
         }
     }
