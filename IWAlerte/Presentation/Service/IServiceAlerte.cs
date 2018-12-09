@@ -7,9 +7,8 @@ using System.Web;
 
 namespace Presentation.Service
 {
-    public interface IServiceDisease : IService<Disease>
+    public interface IServiceAlerte : IService<Alerte>
     {
-        ICollection<Disease> GetAll();
-        Disease FindByName(string name);
+
     }
 }
