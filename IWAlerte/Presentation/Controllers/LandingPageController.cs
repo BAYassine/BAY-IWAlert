@@ -47,6 +47,17 @@ namespace Presentation.Controllers
             return new JsonResult { Data = list, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
+        public JsonResult GetCountry(string id)
+        {
+            IWContext context = new IWContext();
+
+            //var count =context.Alertes.Include("Disease").Include("User").GroupBy(n => n.User.Place);
+            Models.Alerte alert = context.Alertes.Include("User").Include("Disease").Where(x => x.User.Place.Country == id).FirstOrDefault<Models.Alerte>();
+
+
+            return new JsonResult { Data = alert, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
 
 
         // GET: LandingPage/Details/5

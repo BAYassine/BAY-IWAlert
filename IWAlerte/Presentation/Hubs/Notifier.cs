@@ -28,10 +28,10 @@ namespace Presentation.Hubs
             _context.Clients.All.showNotification(Message);
         }
 
-        public void NotifyAllNearBy(string message, string country)
+        public void NotifyAllNearBy(string message, string country, string uid)
         { 
             IWContext context = new IWContext();
-            List<ApplicationUser> users = context.Users.Where(u => u.Place.Country.Equals(country)).ToList();
+            List<ApplicationUser> users = context.Users.Where(u => u.Place.Country.Equals(country) && !u.Id.Equals(uid)).ToList();
             foreach (var user in users)
             {
                 foreach (var connectionId in NotificationHub._connections.GetConnections(user.UserName))

@@ -55,7 +55,7 @@ namespace Presentation.Controllers
                 string userid = User.Identity.GetUserId();               
                 ApplicationUser user = context.Users.FirstOrDefault(x => x.Id == userid);
                 Alerte LastAlerte = serviceAlerte.GetAlerteByUser(user);
-                if( (LastAlerte != null /* && LastAlerte.DateTime.Subtract(DateTime.Today).Days >= 7 */) || LastAlerte == null)
+                if( (LastAlerte != null  && LastAlerte.DateTime.Subtract(DateTime.Today).Days >= 7 ) || LastAlerte == null)
                 {
                     if (user != null)
                     {

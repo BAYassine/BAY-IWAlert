@@ -332,10 +332,10 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- END: Header -->
 
 			<!-- begin::Body -->
-			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+			<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body" style="padding-left: 0">
 
 				<!-- BEGIN: Left Aside -->
-				<button class="m-aside-left-close  m-aside-left-close--skin-dark " id="m_aside_left_close_btn">
+				@*<button class="m-aside-left-close  m-aside-left-close--skin-dark " id="m_aside_left_close_btn">
 					<i class="la la-close"></i>
 				</button>
 				<div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-dark ">
@@ -348,7 +348,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					</div>
 
 					<!-- END: Aside Menu -->
-				</div>
+				</div>*@
 
 				<!-- END: Left Aside -->
 				<div class="m-grid__item m-grid__item--fluid m-wrapper">
@@ -432,8 +432,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
 		<!-- end::Scroll Top -->
 
-		<!-- begin::Quick Nav -->
-		<ul class="m-nav-sticky" style="margin-top: 30px;">
+		<!-- begin::Quick Nav -->   
+		<!--<ul class="m-nav-sticky" style="margin-top: 30px;">
 			<li class="m-nav-sticky__item" data-toggle="m-tooltip" title="Purchase" data-placement="left">
 				<a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank">
 					<i class="la la-cart-arrow-down"></i>
@@ -477,13 +477,12 @@ License: You must have a valid license purchased only from themeforest(the above
                 var chat = $.connection.notificationHub;
 		        // Create a function that the hub can call back to display messages.
                 chat.client.showNotification = function (message) {
-                    console.log("jsdgfhsd")
 		            // Add the message to the page. 
 		            Swal({
 		                title: 'Caution!',
 		                text: message,
 		                type: 'warning',
-		                confirmButtonText: 'Cool'
+		                confirmButtonText: 'OK'
 		            });
 		        };
 		        // Get the user name and store it to prepend to messages.

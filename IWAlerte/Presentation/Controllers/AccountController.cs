@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Presentation.Models;
@@ -139,6 +140,10 @@ namespace Presentation.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            IWContext context = new IWContext();
+            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var Roles = RoleManager.Roles.Where(r => !r.Name.Equals("Admin"));
+            ViewBag.Roles = Roles;
             return View();
         }
 
@@ -156,11 +161,12 @@ namespace Presentation.Controllers
                     Country = model.Place.Country.ToString(),
                     Town = model.Place.Town
                 };
-            
+                string Role = Request.Form["Role"];
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email ,Place = place };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    UserManager.AddToRole(user.Id, Role);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -175,6 +181,11 @@ namespace Presentation.Controllers
             }
 
             // If we got this far, something failed, redisplay form
+
+            IWContext context = new IWContext();
+            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var Roles = RoleManager.Roles.Where(r => !r.Name.Equals("Admin"));
+            ViewBag.Roles = Roles;
             return View(model);
         }
 

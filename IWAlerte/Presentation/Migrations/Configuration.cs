@@ -24,12 +24,13 @@ namespace Presentation.Migrations
             IServiceDisease ServiceDisease = new ServiceDisease();
             IServiceAlerte ServiceAlerte = new ServiceAlerte();
          
-            string name = "Admin1";
+            string name = "Admin";
             string password = "123456";
             if (!RoleManager.RoleExists(name))
             {
                 var roleresult = RoleManager.Create(new IdentityRole(name));
                 RoleManager.Create(new IdentityRole("Membre"));
+                RoleManager.Create(new IdentityRole("Medecin"));
             }
             var user = new ApplicationUser();
 

@@ -83,6 +83,8 @@ namespace Presentation.Models
         public PlaceVM Place { get; set; }
         public string Cin { get; set; }
         public ICollection<Notification> Notifications { get; set; }
+        [Display(Name = "Role")]
+        public string Role;
     }
 
     public class ResetPasswordViewModel
