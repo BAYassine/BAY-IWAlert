@@ -191,6 +191,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlerteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -236,6 +237,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Medecin.cs" />
     <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\PaysCouleur.cs" />
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\PlaceVM.cs" />
     <Compile Include="Models\Prevention_Control.cs" />
@@ -588,6 +590,7 @@
     <Content Include="Views\Alerte\_DisplayInformation.cshtml" />
     <Content Include="Views\Alerte\Error.cshtml" />
     <Content Include="Views\Alerte\Sucess.cshtml" />
+    <Content Include="Views\LandingPage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
