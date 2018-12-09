@@ -59,16 +59,38 @@ namespace Presentation.Controllers
                 {
                     if (user != null)
                     {
-                        Alerte alerte = new Alerte()
+                                               
+                        Alerte a = context.Alertes.Where(c => c.Disease.Name.Equals(disease.Name)).FirstOrDefault();
+                        if(a != null)
                         {
-                            Disease = disease,
-                            User = user,
-                            DateTime = DateTime.Today
-                        };
-                        context.Alertes.Add(alerte);
-                        context.SaveChanges();
+                            Alerte alerte = new Alerte()
+                            {
+                                Disease = disease,
+                                User = user,
+                                DateTime = DateTime.Today,
+                                Danger = a.Danger
+                            };
+                            context.Alertes.Add(alerte);
+                            context.SaveChanges();
+                        }
+                        else
+                        {
+                            Danger d = new Danger() {
+                                Date = DateTime.Now                                     
+                            };
+                            Alerte alerte = new Alerte()
+                            {
+                                Disease = disease,
+                                User = user,
+                                DateTime = DateTime.Today,
+                                Danger = d
+                            };
+                            context.Alertes.Add(alerte);
+                            context.SaveChanges();
+                        }
+                        
 
-                        ICollection<Danger> Dangers = context.Dangers.Include("Alertes").ToList();
+                       /* ICollection<Danger> Dangers = context.Dangers.Include("Alertes").ToList();
                         Danger danger = new Danger();
                         foreach(var D in Dangers)
                         {
@@ -79,12 +101,14 @@ namespace Presentation.Controllers
                                     danger = D;
                             }
                         }
+                        danger.Date = DateTime.Now;
                         //Danger danger = servicedanger.GetDangerByAlert(alerte);
                         if(danger == null)
                         {
-                            danger = new Danger();
+                            
                             danger.Alertes.Add(alerte);
                             context.Dangers.Add(danger);
+                            alerte.Danger = danger;
                             context.SaveChanges();
                       
                         }
@@ -92,7 +116,7 @@ namespace Presentation.Controllers
                         {
                             danger.Alertes.Add(alerte);
                             context.SaveChanges();
-                        }
+                        }*/
                         context.Dispose();
                         return View("Sucess");
                     }

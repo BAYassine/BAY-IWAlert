@@ -359,6 +359,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							<div class="mr-auto">
 								<h3 class="m-subheader__title ">@ViewBag.Title</h3>
 							</div>
+                            <button type="button" class="btn btn-outline-danger btn-lg"><a class="active" href="@Url.Action("Create","Alerte")">Alert</a></button>
 							<div>
 						</div>
 					</div>
@@ -475,7 +476,8 @@ License: You must have a valid license purchased only from themeforest(the above
 		        // Reference the auto-generated proxy for the hub.  
                 var chat = $.connection.notificationHub;
 		        // Create a function that the hub can call back to display messages.
-		        chat.client.showNotification = function (message) {
+                chat.client.showNotification = function (message) {
+                    console.log("jsdgfhsd")
 		            // Add the message to the page. 
 		            Swal({
 		                title: 'Caution!',

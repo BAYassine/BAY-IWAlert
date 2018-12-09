@@ -26,7 +26,7 @@ namespace Presentation.Controllers
             {
                 Notifier notifier = Notifier.getInstance().Value;
                 danger.Notified = true;
-                notifier.NotifyAllNearBy("New danger", user.Place.Country);
+                notifier.NotifyAllNearBy("New danger", "Afghanistan");
             }
             context.SaveChanges();
             return RedirectToAction("Index");
@@ -36,7 +36,8 @@ namespace Presentation.Controllers
         {
             IWContext context = new IWContext();
             DateTime monthAgo = DateTime.Now.AddDays(-30);
-            var dangers = context.Dangers.Where(d => d.Date > monthAgo).Include("Alertes").ToList();
+            var dangers = context.Dangers.Where(d => d.Date > monthAgo).Include("Alertes").Include("Alertes.Disease").ToList();
+
             ViewData["dangers"] = dangers;
             return View();
         }
